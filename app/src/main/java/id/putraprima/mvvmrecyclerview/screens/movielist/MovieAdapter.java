@@ -16,10 +16,17 @@ import id.putraprima.mvvmrecyclerview.models.Movie;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private List<Movie> movieList;
 
+    public MovieAdapter() {
+    }
+
     public MovieAdapter(List<Movie> movieList) {
         this.movieList = movieList;
     }
 
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
