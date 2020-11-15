@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,12 @@ public class ListMovieFragment extends Fragment {
         RecyclerView recyclerView = binding.rvMovie;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        MovieAdapter adapter = new MovieAdapter();
+        MovieAdapter adapter = new MovieAdapter(new OnItemMovieListener() {
+            @Override
+            public void onMovieClicked(Movie movie) {
+                Toast.makeText(getContext(),"Movie"+movie.getMovieTitle(),Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
         viewModel.listMovieLiveData().observe(getViewLifecycleOwner(), new Observer<List<Movie>>() {
             @Override

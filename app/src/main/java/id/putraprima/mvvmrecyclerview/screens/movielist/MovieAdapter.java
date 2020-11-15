@@ -15,12 +15,22 @@ import id.putraprima.mvvmrecyclerview.models.Movie;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private List<Movie> movieList;
+    private OnItemMovieListener itemMovieListener;
 
     public MovieAdapter() {
     }
 
     public MovieAdapter(List<Movie> movieList) {
         this.movieList = movieList;
+    }
+
+    public MovieAdapter(OnItemMovieListener itemMovieListener) {
+        this.itemMovieListener = itemMovieListener;
+    }
+
+    public MovieAdapter(List<Movie> movieList, OnItemMovieListener itemMovieListener) {
+        this.movieList = movieList;
+        this.itemMovieListener = itemMovieListener;
     }
 
     public void setMovieList(List<Movie> movieList) {
@@ -39,7 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
-        holder.bind(movie);
+        holder.bind(movie,itemMovieListener);
     }
 
     @Override
@@ -60,9 +70,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             this.binding = binding;
         }
 
-        public void bind(Movie movie){
+        public void bind(Movie movie, OnItemMovieListener itemMovieListener){
             binding.setMovie(movie);
+            binding.setClickListener(itemMovieListener);
             binding.executePendingBindings();
         }
     }
 }
+
