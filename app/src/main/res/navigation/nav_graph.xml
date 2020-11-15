@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/listMovieFragment">
 
     <fragment
         android:id="@+id/listMovieFragment"
         android:name="id.putraprima.mvvmrecyclerview.screens.movielist.ListMovieFragment"
-        android:label="ListMovieFragment" />
+        android:label="ListMovieFragment" >
+        <action
+            android:id="@+id/action_listMovieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="id.putraprima.mvvmrecyclerview.screens.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+        <argument
+            android:name="movie"
+            app:argType="id.putraprima.mvvmrecyclerview.models.Movie" />
+    </fragment>
 </navigation>

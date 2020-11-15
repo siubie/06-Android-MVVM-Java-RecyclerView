@@ -27,4 +27,18 @@ public class ListMovieFragmentViewModel extends ViewModel {
         this.listMovieMutableLiveData.setValue(listMovie);
     }
 
+    private MutableLiveData<Movie> _navigateToDetail = new MutableLiveData<>();
+
+    public LiveData<Movie> navigateToDetail(){
+        return _navigateToDetail;
+    }
+
+    public void onMovieClicked(Movie movie){
+        _navigateToDetail.setValue(movie);
+    }
+
+    public void onMovieDetailNavigated(){
+        _navigateToDetail.setValue(null);
+    }
+
 }
