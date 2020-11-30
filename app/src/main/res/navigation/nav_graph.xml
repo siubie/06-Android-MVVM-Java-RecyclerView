@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listMovieFragment"
         android:name="id.putraprima.mvvmrecyclerview.screens.movielist.ListMovieFragment"
-        android:label="ListMovieFragment" >
+        android:label="List Movie" >
         <action
             android:id="@+id/action_listMovieFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
@@ -16,5 +16,5 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="id.putraprima.mvvmrecyclerview.screens.moviedetail.MovieDetailFragment"
-        android:label="MovieDetailFragment" />
+        android:label="Detail Movie" />
 </navigation>
