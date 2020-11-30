@@ -16,9 +16,5 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="id.putraprima.mvvmrecyclerview.screens.moviedetail.MovieDetailFragment"
-        android:label="MovieDetailFragment" >
-        <argument
-            android:name="movie"
-            app:argType="id.putraprima.mvvmrecyclerview.models.Movie" />
-    </fragment>
+        android:label="MovieDetailFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package id.putraprima.mvvmrecyclerview.screens.movielist;
+package id.putraprima.mvvmrecyclerview.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
@@ -8,18 +8,18 @@ import java.util.List;
 
 import id.putraprima.mvvmrecyclerview.models.Movie;
 
-public class ListMovieFragmentViewModelFactory implements ViewModelProvider.Factory {
+public class MovieViewModelFactory implements ViewModelProvider.Factory{
     private List<Movie> listMovie;
 
-    public ListMovieFragmentViewModelFactory(List<Movie> listMovie) {
+    public MovieViewModelFactory(List<Movie> listMovie) {
         this.listMovie = listMovie;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if(modelClass.isAssignableFrom(ListMovieFragmentViewModel.class)){
-            return (T) new ListMovieFragmentViewModel(listMovie);
+        if(modelClass.isAssignableFrom(MovieViewModel.class)){
+            return (T) new MovieViewModel(listMovie);
         }
         throw new IllegalArgumentException("Viewmodel Yang Diminta MainActivityViewModel");
     }
