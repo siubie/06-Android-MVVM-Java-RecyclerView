@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import id.putraprima.mvvmrecyclerview.models.Movie;
@@ -12,10 +11,8 @@ import id.putraprima.mvvmrecyclerview.models.Movie;
 public class MovieViewModel extends ViewModel {
     private MutableLiveData<List<Movie>> listMovieMutableLiveData = new MutableLiveData<List<Movie>>();
     private MutableLiveData<Movie> movieMutableLiveData = new MutableLiveData<>();
-    private List<Movie> movieList = new ArrayList<>();
 
     public MovieViewModel(List<Movie> movieList) {
-        this.movieList = movieList;
         this.listMovieMutableLiveData.setValue(movieList);
     }
 
@@ -32,7 +29,11 @@ public class MovieViewModel extends ViewModel {
     }
 
     public void addOneItem(){
-        movieList.add(new Movie("Judul Baru","Deskripsi Item Baru",false));
+
+        List<Movie> movieList = this.listMovieMutableLiveData.getValue();
+        if(movieList!=null){
+            movieList.add(new Movie("Judul Baru","Deskripsi Item Baru",false));
+        }
         this.listMovieMutableLiveData.setValue(movieList);
     }
 }

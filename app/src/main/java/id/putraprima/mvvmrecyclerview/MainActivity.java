@@ -14,8 +14,6 @@ import id.putraprima.mvvmrecyclerview.viewmodels.MovieViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MovieViewModel movieViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
         movieList.add(new Movie("Naga Bonar", "Filem Perjuangan Naga Bonar Melawan Penjajah Belanda", false));
         movieList.add(new Movie("Naga Bonar Jadi Dua", "Filem Perjuangan Naga Bonar dan Anaknya Melawan Penjajah Asing dan Aseng", false));
         MovieViewModelFactory movieViewModelFactory = new MovieViewModelFactory(movieList);
-        movieViewModel = new ViewModelProvider(this,movieViewModelFactory).get(MovieViewModel.class);
+        MovieViewModel movieViewModel = new ViewModelProvider(this, movieViewModelFactory).get(MovieViewModel.class);
     }
 }
