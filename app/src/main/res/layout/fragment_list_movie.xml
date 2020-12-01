@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="id.putraprima.mvvmrecyclerview.viewmodels.MovieViewModel" />
+            type="id.putraprima.mvvmrecyclerview.screens.movielist.ListMovieFragmentViewModel" />
 
     </data>
 

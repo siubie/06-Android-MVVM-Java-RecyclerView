@@ -6,11 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +15,13 @@ import android.view.ViewGroup;
 import id.putraprima.mvvmrecyclerview.R;
 import id.putraprima.mvvmrecyclerview.databinding.FragmentMovieDetailBinding;
 import id.putraprima.mvvmrecyclerview.models.Movie;
-import id.putraprima.mvvmrecyclerview.viewmodels.MovieViewModel;
+import id.putraprima.mvvmrecyclerview.screens.movielist.ListMovieFragmentViewModel;
+import id.putraprima.mvvmrecyclerview.screens.movielist.ListMovieFragmentViewModelFactory;
 
 public class MovieDetailFragment extends Fragment {
 
     private FragmentMovieDetailBinding binding;
-    private MovieViewModel viewModel;
+    private MovieDetailFragmentViewModel viewModel;
 
     public MovieDetailFragment() {
         // Required empty public constructor
@@ -39,8 +37,11 @@ public class MovieDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        assert getArguments() != null;
+        Movie movie =  MovieDetailFragmentArgs.fromBundle(getArguments()).getMovie();
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_movie_detail, container, false);
-        viewModel = new ViewModelProvider(requireActivity()).get(MovieViewModel.class);
+        MovieDetailFragmentViewModelFactory movieDetailFragmentViewModelFactory = new MovieDetailFragmentViewModelFactory(movie);
+        viewModel = new ViewModelProvider(this,movieDetailFragmentViewModelFactory).get(MovieDetailFragmentViewModel.class);
         binding.setViewModel(viewModel);
         return binding.getRoot();
     }

@@ -20,5 +20,9 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="id.putraprima.mvvmrecyclerview.screens.moviedetail.MovieDetailFragment"
-        android:label="Detail Movie" />
+        android:label="Detail Movie" >
+        <argument
+            android:name="movie"
+            app:argType="id.putraprima.mvvmrecyclerview.models.Movie" />
+    </fragment>
 </navigation>
